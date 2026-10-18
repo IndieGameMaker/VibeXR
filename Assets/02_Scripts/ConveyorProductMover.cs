@@ -10,6 +10,13 @@ public sealed class ConveyorProductMover : MonoBehaviour
     [SerializeField] private float startZ = -12.75f;
     [SerializeField] private float endZ = 12.75f;
 
+    public void ConfigureMotion(float newSpeed, float newStartZ, float newEndZ)
+    {
+        speed = Mathf.Max(0f, newSpeed);
+        startZ = newStartZ;
+        endZ = Mathf.Max(newStartZ + 0.01f, newEndZ);
+    }
+
     private void Update()
     {
         Vector3 position = transform.position;

@@ -2,16 +2,23 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEditor.SceneManagement;
+#endif
 
 /// <summary>
 /// Builds the conveyor settings panel and applies spacing and speed changes immediately.
 /// </summary>
+[ExecuteAlways]
 public sealed class ConveyorSettingsPanel : MonoBehaviour
 {
     [Header("Conveyor")]
     [SerializeField] private Transform productsRoot;
     [SerializeField] private GameObject productPrefab;
     [SerializeField] private TMP_FontAsset koreanFont;
+    [SerializeField] private Sprite roundedSpriteAsset;
+    [SerializeField] private Sprite dotSpriteAsset;
     [SerializeField] private float conveyorLength = 26f;
     [SerializeField] private float productSpacing = 2.6f;
     [SerializeField] private float conveyorSpeed = 0.65f;
@@ -28,13 +35,15 @@ public sealed class ConveyorSettingsPanel : MonoBehaviour
     private const float MinSpeed = 0f;
     private const float MaxSpeed = 3f;
 
-    private void Awake()
+    private void OnEnable()
     {
-        BuildPanel();
+        EnsurePanel();
     }
 
     private void Start()
     {
+        if (!Application.isPlaying) return;
+
         if (spacingInput != null)
         {
             spacingInput.onValueChanged.AddListener(OnSpacingChanged);
@@ -48,6 +57,31 @@ public sealed class ConveyorSettingsPanel : MonoBehaviour
         if (spacingSlider != null) spacingSlider.onValueChanged.AddListener(OnSpacingSliderChanged);
         if (speedSlider != null) speedSlider.onValueChanged.AddListener(OnSpeedSliderChanged);
         ApplySettings();
+    }
+
+    private void EnsurePanel()
+    {
+        Transform existingCanvas = transform.Find("ConveyorSettingsCanvas");
+        if (existingCanvas != null)
+        {
+            TMP_InputField[] inputs = existingCanvas.GetComponentsInChildren<TMP_InputField>(true);
+            Slider[] sliders = existingCanvas.GetComponentsInChildren<Slider>(true);
+            if (inputs.Length > 0) spacingInput = inputs[0];
+            if (inputs.Length > 1) speedInput = inputs[1];
+            if (sliders.Length > 0) spacingSlider = sliders[0];
+            if (sliders.Length > 1) speedSlider = sliders[1];
+            EnsureSprites();
+            return;
+        }
+
+        BuildPanel();
+#if UNITY_EDITOR
+        if (!Application.isPlaying && gameObject.scene.IsValid())
+        {
+            EditorUtility.SetDirty(gameObject);
+            EditorSceneManager.MarkSceneDirty(gameObject.scene);
+        }
+#endif
     }
 
     private void OnDestroy()
@@ -202,8 +236,10 @@ public sealed class ConveyorSettingsPanel : MonoBehaviour
         CreateText("PanelFooter", panel, "슬라이더 또는 숫자 입력으로 조정", font, 10, FontStyles.Normal, new Vector2(22f, -365f), new Vector2(274f, 18f), TextAlignmentOptions.MidlineLeft, secondary);
     }
 
-    private static void EnsureSprites()
+    private void EnsureSprites()
     {
+        if (roundedSpriteAsset != null) roundedSprite = roundedSpriteAsset;
+        if (dotSpriteAsset != null) dotSprite = dotSpriteAsset;
         if (roundedSprite == null) roundedSprite = CreateRoundedSprite("RuntimeRoundedSprite", 64, 18f, true);
         if (dotSprite == null) dotSprite = CreateRoundedSprite("RuntimeDotSprite", 64, 32f, false);
     }

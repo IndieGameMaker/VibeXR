@@ -1,0 +1,12 @@
+{
+    "asset": "7d5b721aa4b3242698a12ac03f1f8eac",
+    "fileName": "01a16bbc-50a6-7971-a48d-b8c09437f97a.fbx",
+    "prompt": "walk",
+    "negativePrompt": "",
+    "model": "uthana-text-to-motion-3",
+    "modelName": "Uthana Text to Motion 3.0",
+    "customSeed": 2073158860,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "isTrimmed": false
+}

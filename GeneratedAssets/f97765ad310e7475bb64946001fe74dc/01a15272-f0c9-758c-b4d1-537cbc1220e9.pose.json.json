@@ -1,0 +1,12 @@
+{
+    "asset": "f97765ad310e7475bb64946001fe74dc",
+    "fileName": "01a15272-f0c9-758c-b4d1-537cbc1220e9.pose.json",
+    "prompt": "Walk",
+    "negativePrompt": "",
+    "model": "unity-text-to-motion",
+    "modelName": "Text to Motion",
+    "customSeed": 878016929,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "isTrimmed": false
+}

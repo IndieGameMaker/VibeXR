@@ -1,0 +1,23 @@
+{
+    "asset": "657dffb2f66df4145ab2fc156901cc2d",
+    "fileName": "01a15267-a690-7dc7-ac4a-3ca4aa0b4b9c.glb",
+    "prompt": "A Factory Worker",
+    "negativePrompt": "",
+    "model": "model3d-tripo-p1",
+    "modelName": "Tripo P1",
+    "customSeed": -1,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "refinementMode": "Generation",
+    "promptImageReferenceGuid": "0b4ae87fe39b54baf95c491185678754",
+    "modelReferenceGuid": "",
+    "multiviewFrontGuid": "",
+    "multiviewBackGuid": "",
+    "multiviewLeftGuid": "",
+    "multiviewRightGuid": "",
+    "multiviewTopGuid": "",
+    "multiviewBottomGuid": "",
+    "multiviewLeftFrontGuid": "",
+    "multiviewRightFrontGuid": "",
+    "faceLimit": 10000
+}

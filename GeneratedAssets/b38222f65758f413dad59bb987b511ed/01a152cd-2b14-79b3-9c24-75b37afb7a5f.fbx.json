@@ -1,0 +1,23 @@
+{
+    "asset": "b38222f65758f413dad59bb987b511ed",
+    "fileName": "01a152cd-2b14-79b3-9c24-75b37afb7a5f.fbx",
+    "prompt": "A Factory Worker",
+    "negativePrompt": "",
+    "model": "model3d-tripo3-texturing",
+    "modelName": "Tripo 3.0 Texturing",
+    "customSeed": -1,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "refinementMode": "Texturing",
+    "promptImageReferenceGuid": "0b4ae87fe39b54baf95c491185678754",
+    "modelReferenceGuid": "b38222f65758f413dad59bb987b511ed",
+    "multiviewFrontGuid": "",
+    "multiviewBackGuid": "",
+    "multiviewLeftGuid": "",
+    "multiviewRightGuid": "",
+    "multiviewTopGuid": "",
+    "multiviewBottomGuid": "",
+    "multiviewLeftFrontGuid": "",
+    "multiviewRightFrontGuid": "",
+    "faceLimit": -1
+}
